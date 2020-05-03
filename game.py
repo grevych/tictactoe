@@ -1,4 +1,5 @@
 import token
+from player import SystemPlayer
 
 
 class GameException(Exception):
@@ -36,11 +37,16 @@ class Game(object):
         if self.__board__.is_full():
           raise DrawGame()
 
-        turn = self.__turns__.pop(0)
+        index = len(self.__turns__) - 2
+        turn = self.__turns__[index]
 
         print('It is player {0}\'s turn!'.format(turn.name()))
 
-        coordinate = turn.make_move()
+        if isinstance(turn, SystemPlayer):
+          coordinate = self.__board__.random_untaken_coordinate()
+        else:
+          coordinate = turn.make_move()
+
         player_token = token.Token(turn.token_symbol())
         self.__board__.add_token(player_token, coordinate)
       except GameException as error:
@@ -48,7 +54,7 @@ class Game(object):
         exit(0)
       except Exception as error:
         print(error)
-        self.__turns__.insert(0, turn)
+        # self.__turns__.insert(0, turn)
       
       self.__turns__.append(turn)
       self.__board__.render()

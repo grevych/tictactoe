@@ -26,10 +26,4 @@ class RealPlayer(Player):
 
 
 class SystemPlayer(Player):
-  def __init__(self, name, token_symbol, board):
-    Player.__init__(self, name, token_symbol)
-
-    self.__board__ = board
-
-  def make_move(self):
-    return self.__board__.random_untaken_coordinate()
+  pass

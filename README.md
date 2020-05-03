@@ -11,7 +11,7 @@ from player import SystemPlayer, RealPlayer
 
 board = Board()
 player_a = RealPlayer('Your Name', 'X')
-player_b = SystemPlayer('Fake AI', 'O', board)
+player_b = SystemPlayer('Fake AI', 'O')
 
 game = Game(board, [player_a, player_b])
 
