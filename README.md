@@ -10,8 +10,8 @@ from player import SystemPlayer, RealPlayer
 
 
 board = Board()
-player_a = RealPlayer('Your Name', 'X', board)
-player_b = SystemPlayer('Fake AI', 'O', borad)
+player_a = RealPlayer('Your Name', 'X')
+player_b = SystemPlayer('Fake AI', 'O', board)
 
 game = Game(board, [player_a, player_b])
 
